@@ -1,7 +1,7 @@
 {
   "name": "@epi/jsonpath",
   "description": "Query JavaScript objects with JSONPath expressions. Robust / safe JSONPath engine for Node.js.",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "author": "david@fmail.co.uk",
   "scripts": {
     "test": "mocha -u tdd test && jscs lib && jshint lib",
