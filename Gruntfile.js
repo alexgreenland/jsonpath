@@ -13,17 +13,6 @@ module.exports = function (grunt) {
                     alias: {
                         "jsonpath": "./index.js"
                     },
-                    require: [
-                        /**
-                         * When running in Node, we require('./aesprim') and that module takes care of monkey-patching esprima
-                         * using resolve, path finding, etc...
-                         * Anyways, Browserify doesn't support "resolve", so we need to trick the module. We'll actually be
-                         * returning a verbatim, non-modified "esprima" when the code runs require('./aesprim').
-                         * That is ok because we will modify the "esprima" source code right after the bundle process, via
-                         * the postBundleCB callback.
-                         */
-                        ["esprima", {expose: "./aesprim"}]
-                    ],
                     ignore: [
                         'file',
                         'system',
@@ -32,8 +21,7 @@ module.exports = function (grunt) {
                         'escodegen',
                         'underscore',
                         'reflect',
-                        'JSONSelect',
-                        './lib/aesprim.js'
+                        'JSONSelect'
                         //'assert' //can't remove because of lib/index.js,
                     ],
                     postBundleCB: function(err, src, next) {
